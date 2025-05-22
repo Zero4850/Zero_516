@@ -10,14 +10,13 @@
       margin: 0;
       font-family: 'Cairo', sans-serif;
       scroll-behavior: smooth;
-      background: linear-gradient(to bottom, #1e1e2f, #121221);
-      color: #ddd;
+      background: linear-gradient(to bottom, #1b263b, #415a77);
+      color: #dbe9f4;
       overflow-x: hidden;
-      min-height: 100vh;
     }
     header {
-      background: #111;
-      color: white;
+      background: #162447;
+      color: #dbe9f4;
       text-align: center;
       padding: 4rem 1rem;
       position: relative;
@@ -28,7 +27,7 @@
       height: 150px;
       object-fit: cover;
       margin-bottom: 1rem;
-      border: 3px solid #555;
+      border: 3px solid #dbe9f4;
     }
     header h1 {
       margin: 0;
@@ -36,7 +35,7 @@
     }
     header p {
       font-size: 1.2rem;
-      color: #aaa;
+      color: #a3b1c6;
     }
     section {
       padding: 3rem 1rem;
@@ -44,105 +43,102 @@
       margin: auto;
     }
     h2 {
-      color: #eee;
+      color: #a3b1c6;
       margin-bottom: 1rem;
+      border-bottom: 2px solid #dbe9f4;
+      padding-bottom: 0.3rem;
     }
     ul {
       padding: 0;
       list-style: none;
     }
     ul li {
-      background: #222233;
+      background: #2e4057;
       margin: 0.5rem 0;
       padding: 0.8rem;
       border-radius: 8px;
+      color: #dbe9f4;
     }
     .links a {
       display: inline-block;
       margin: 0.5rem;
       text-decoration: none;
-      color: white;
-      background: #333;
+      color: #dbe9f4;
+      background: #2e4057;
       padding: 0.5rem 1rem;
       border-radius: 8px;
       transition: background 0.3s;
     }
     .links a:hover {
-      background: #555;
+      background: #415a77;
     }
-    form input, form textarea {
+    form input,
+    form textarea {
       width: 100%;
       padding: 0.8rem;
       margin: 0.5rem 0;
-      border: 1px solid #444;
+      border: 1px solid #415a77;
       border-radius: 6px;
-      background: #222233;
-      color: #eee;
       font-family: 'Cairo', sans-serif;
+      background: #2e4057;
+      color: #dbe9f4;
+    }
+    form input::placeholder,
+    form textarea::placeholder {
+      color: #a3b1c6;
     }
     form button {
       padding: 0.7rem 1.5rem;
       border: none;
-      background: #444;
-      color: white;
+      background: #162447;
+      color: #dbe9f4;
       border-radius: 6px;
       cursor: pointer;
       transition: background 0.3s;
     }
     form button:hover {
-      background: #666;
+      background: #415a77;
     }
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      background: #111;
-      color: #666;
+      background: #162447;
+      color: #a3b1c6;
     }
     #backToTop {
       position: fixed;
       bottom: 20px;
       left: 20px;
-      background: #333;
-      color: white;
+      background: #415a77;
+      color: #dbe9f4;
       padding: 0.5rem 1rem;
       border-radius: 6px;
       cursor: pointer;
       display: none;
       z-index: 999;
+      user-select: none;
     }
     .snowflake {
       position: fixed;
       top: -10px;
-      color: white;
+      color: #dbe9f4;
       font-size: 1em;
       user-select: none;
       animation: fall linear infinite;
-      opacity: 0.8;
     }
     @keyframes fall {
-      0% { transform: translateY(-10px); }
-      100% { transform: translateY(100vh); }
-    }
-    section button#projectsBtn {
-      padding: 0.7rem 1.5rem;
-      border: none;
-      background: #444;
-      color: #eee;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-      box-shadow: 0 0 5px #555;
-      margin-top: 1rem;
-      font-size: 1rem;
-    }
-    section button#projectsBtn:hover {
-      background: #666;
+      0% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(100vh);
+      }
     }
   </style>
 </head>
 <body>
-
   <div id="backToTop" onclick="scrollToTop()">🔝 للأعلى</div>
+
   <header>
     <img src="https://l.top4top.io/p_3429l71o01.jpg" alt="Zero Relax" />
     <h1>Zero Relax</h1>
@@ -151,8 +147,10 @@
 
   <section>
     <h2>من أنا؟</h2>
-    <p>أنا Zero Relax، مبرمج سوري بعمر 18 سنة. أشتغل على تطوير بوتات الديسكورد، برمجة المواقع، وتصميم الألعاب. أؤمن بأن البرمجة فن، وكل مشروع هو فرصة للإبداع.</p>
-    <button id="projectsBtn" onclick="location.href='projects.html'">مشاريعي</button>
+    <p>
+      أنا Zero Relax، مبرمج سوري بعمر 18 سنة. أشتغل على تطوير بوتات الديسكورد، برمجة المواقع،
+      وتصميم الألعاب. أؤمن بأن البرمجة فن، وكل مشروع هو فرصة للإبداع.
+    </p>
   </section>
 
   <section>
@@ -161,6 +159,15 @@
       <li>برمجة بوتات ديسكورد احترافية</li>
       <li>تصميم وبرمجة مواقع شخصية وتجارية</li>
       <li>تطوير ألعاب باستخدام محركات ألعاب</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>مشاريعي المميزة</h2>
+    <ul>
+      <li>نظام تذاكر مخصص للديسكورد</li>
+      <li>موقع تفاعلي لعرض البورتفوليو</li>
+      <li>لعبة صغيرة على المتصفح للتحكم بشخصية بوت</li>
     </ul>
   </section>
 
@@ -189,68 +196,68 @@
       <textarea name="message" placeholder="طلبك" rows="5" required></textarea>
       <button type="submit">إرسال</button>
     </form>
-  </section>
 
-  <footer>
-    © 2025 Zero Relax. كل الحقوق محفوظة.
-  </footer>
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const message = e.target.message.value;
 
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const name = e.target.name.value;
-      const message = e.target.message.value;
+        const webhookURL =
+          'https://discord.com/api/webhooks/1229457989565569145/w4MEg8BaW-9cMVF8e-rw1iJxnpXwGFo-cHJXJ1iZzGpVXbwNlRC0eMSp7Oaq5y7R8qfd';
 
-      const webhookURL = "https://discord.com/api/webhooks/1229457989565569145/w4MEg8BaW-9cMVF8e-rw1iJxnpXwGFo-cHJXJ1iZzGpVXbwNlRC0eMSp7Oaq5y7R8qfd";
-
-      const payload = {
-        embeds: [{
-          title: "📩 طلب جديد",
-          fields: [
-            { name: "👤 الاسم", value: name },
-            { name: "📝 الطلب", value: message }
+        const payload = {
+          embeds: [
+            {
+              title: '📩 طلب جديد',
+              fields: [
+                { name: '👤 الاسم', value: name },
+                { name: '📝 الطلب', value: message },
+              ],
+              color: 3447003,
+            },
           ],
-          color: 3447003
-        }]
-      };
+        };
 
-      const response = await fetch(webhookURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
+        const response = await fetch(webhookURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+          alert('✅ تم إرسال طلبك بنجاح!');
+          e.target.reset();
+        } else {
+          alert('❌ حدث خطأ، حاول مرة ثانية.');
+        }
       });
 
-      if (response.ok) {
-        alert('✅ تم إرسال طلبك بنجاح!');
-        e.target.reset();
-      } else {
-        alert('❌ حدث خطأ، حاول مرة ثانية.');
+      window.addEventListener('scroll', () => {
+        const btn = document.getElementById('backToTop');
+        btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+      });
+
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
-    });
 
-    window.addEventListener("scroll", () => {
-      const btn = document.getElementById("backToTop");
-      btn.style.display = window.scrollY > 300 ? "block" : "none";
-    });
+      // تساقط الثلج
+      setInterval(() => {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.innerHTML = '❄';
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+        snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+        document.body.appendChild(snowflake);
+        setTimeout(() => snowflake.remove(), 5000);
+      }, 200);
+    </script>
+  </section>
 
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // تساقط الثلج
-    setInterval(() => {
-      const snowflake = document.createElement("div");
-      snowflake.classList.add("snowflake");
-      snowflake.innerHTML = "❄";
-      snowflake.style.left = Math.random() * 100 + "vw";
-      snowflake.style.animationDuration = (Math.random() * 3 + 2) + "s";
-      snowflake.style.fontSize = (Math.random() * 10 + 10) + "px";
-      document.body.appendChild(snowflake);
-      setTimeout(() => snowflake.remove(), 5000);
-    }, 200);
-  </script>
-
+  <footer>© 2025 Zero Relax. كل الحقوق محفوظة.</footer>
 </body>
 </html>
