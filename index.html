@@ -10,14 +10,16 @@
       margin: 0;
       font-family: 'Cairo', sans-serif;
       scroll-behavior: smooth;
-      background: linear-gradient(#0f2027, #203a43, #2c5364);
-      color: #fff;
-      position: relative;
+      background: linear-gradient(to bottom, #ddeeff, #f8f9ff);
+      color: #222;
       overflow-x: hidden;
     }
     header {
+      background: #111;
+      color: white;
       text-align: center;
       padding: 4rem 1rem;
+      position: relative;
     }
     header img {
       border-radius: 50%;
@@ -25,7 +27,6 @@
       height: 150px;
       object-fit: cover;
       margin-bottom: 1rem;
-      border: 3px solid #fff;
     }
     header h1 {
       margin: 0;
@@ -41,7 +42,7 @@
       margin: auto;
     }
     h2 {
-      color: #fff;
+      color: #333;
       margin-bottom: 1rem;
     }
     ul {
@@ -49,7 +50,7 @@
       list-style: none;
     }
     ul li {
-      background: rgba(255, 255, 255, 0.1);
+      background: #eee;
       margin: 0.5rem 0;
       padding: 0.8rem;
       border-radius: 8px;
@@ -59,19 +60,19 @@
       margin: 0.5rem;
       text-decoration: none;
       color: white;
-      background: #444;
+      background: #333;
       padding: 0.5rem 1rem;
       border-radius: 8px;
       transition: background 0.3s;
     }
     .links a:hover {
-      background: #666;
+      background: #555;
     }
     form input, form textarea {
       width: 100%;
       padding: 0.8rem;
       margin: 0.5rem 0;
-      border: none;
+      border: 1px solid #ccc;
       border-radius: 6px;
       font-family: 'Cairo', sans-serif;
     }
@@ -97,31 +98,40 @@
       position: fixed;
       bottom: 20px;
       left: 20px;
-      background: #444;
+      background: #333;
       color: white;
       padding: 0.5rem 1rem;
       border-radius: 6px;
-      display: none;
       cursor: pointer;
+      display: none;
+      z-index: 999;
     }
     .snowflake {
       position: fixed;
       top: -10px;
-      width: 10px;
-      height: 10px;
-      background: white;
-      border-radius: 50%;
-      opacity: 0.8;
+      color: white;
+      font-size: 1em;
+      user-select: none;
       animation: fall linear infinite;
     }
     @keyframes fall {
-      to {
-        transform: translateY(100vh);
-      }
+      0% { transform: translateY(-10px); }
+      100% { transform: translateY(100vh); }
+    }
+    .presence {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .presence img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
+
+  <div id="backToTop" onclick="scrollToTop()">🔝 للأعلى</div>
   <header>
     <img src="https://l.top4top.io/p_3429l71o01.jpg" alt="Zero Relax">
     <h1>Zero Relax</h1>
@@ -143,11 +153,19 @@
   </section>
 
   <section>
-    <h2>الإنجازات</h2>
+    <h2>مشاريعي المميزة</h2>
     <ul>
-      <li>عدد المشاريع: 25+</li>
-      <li>سنوات الخبرة: 3</li>
-      <li>العملاء السعداء: 50+</li>
+      <li>نظام تذاكر مخصص للديسكورد</li>
+      <li>موقع تفاعلي لعرض البورتفوليو</li>
+      <li>لعبة صغيرة على المتصفح للتحكم بشخصية بوت</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>آراء العملاء</h2>
+    <ul>
+      <li>"شغل احترافي وسريع جدًا!" - عميل من السعودية</li>
+      <li>"فهم فكرتي من أول شرح، شكراً زيرو" - عميل من تركيا</li>
     </ul>
   </section>
 
@@ -159,14 +177,11 @@
       <a href="tel:+905350894170">اتصل بي</a>
     </div>
     <p>أو تواصل معي عبر ديسكورد: <strong>_nr5</strong></p>
-  </section>
-
-  <section>
-    <h2>آراء العملاء</h2>
-    <ul>
-      <li>🔥 "شغل احترافي وسريع، أنصح فيه!" - عميل 1</li>
-      <li>💯 "فهم المطلوب بسرعة وسلّمه بشكل ممتاز" - عميل 2</li>
-    </ul>
+    <div class="presence">
+      <a href="https://discord.com/users/1163034928502550658" target="_blank">
+        <img src="https://lanyard.cnrad.dev/api/1163034928502550658" alt="Discord Presence">
+      </a>
+    </div>
   </section>
 
   <section>
@@ -182,22 +197,24 @@
         const name = e.target.name.value;
         const message = e.target.message.value;
 
-        const webhookURL = "https://discord.com/api/webhooks/1375197806876168253/hAOxVCfgBfuzqFLzwH1VZKLi7cStT5N7045bRGfBsURGtgnlxCkXFLxW2EgLoDNqqZCv";
+        const webhookURL = "https://discord.com/api/webhooks/1229457989565569145/w4MEg8BaW-9cMVF8e-rw1iJxnpXwGFo-cHJXJ1iZzGpVXbwNlRC0eMSp7Oaq5y7R8qfd";
 
         const payload = {
           embeds: [{
             title: "📩 طلب جديد",
             fields: [
-              { name: "👤 الاسم", value: name, inline: true },
-              { name: "📝 الطلب", value: message, inline: false }
+              { name: "👤 الاسم", value: name },
+              { name: "📝 الطلب", value: message }
             ],
-            color: 5814783
+            color: 3447003
           }]
         };
 
         const response = await fetch(webhookURL, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json"
+          },
           body: JSON.stringify(payload)
         });
 
@@ -208,28 +225,33 @@
           alert('❌ حدث خطأ، حاول مرة ثانية.');
         }
       });
+
+      window.addEventListener("scroll", () => {
+        const btn = document.getElementById("backToTop");
+        btn.style.display = window.scrollY > 300 ? "block" : "none";
+      });
+
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // تساقط الثلج
+      setInterval(() => {
+        const snowflake = document.createElement("div");
+        snowflake.classList.add("snowflake");
+        snowflake.innerHTML = "❄";
+        snowflake.style.left = Math.random() * 100 + "vw";
+        snowflake.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        snowflake.style.fontSize = (Math.random() * 10 + 10) + "px";
+        document.body.appendChild(snowflake);
+        setTimeout(() => snowflake.remove(), 5000);
+      }, 200);
     </script>
   </section>
-
-  <div id="backToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">⬆ رجوع للأعلى</div>
 
   <footer>
     © 2025 Zero Relax. كل الحقوق محفوظة.
   </footer>
 
-  <script>
-    window.addEventListener('scroll', () => {
-      document.getElementById('backToTop').style.display = window.scrollY > 500 ? 'block' : 'none';
-    });
-
-    for (let i = 0; i < 50; i++) {
-      let snow = document.createElement('div');
-      snow.classList.add('snowflake');
-      snow.style.left = Math.random() * 100 + 'vw';
-      snow.style.animationDuration = (Math.random() * 3 + 2) + 's';
-      snow.style.opacity = Math.random();
-      document.body.appendChild(snow);
-    }
-  </script>
 </body>
 </html>
