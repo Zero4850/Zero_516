@@ -21,12 +21,31 @@
       padding: 4rem 1rem;
       position: relative;
     }
-    header img {
+    .profile-container {
+      position: relative;
+      display: inline-block;
+    }
+    .profile-container img.profile {
       border-radius: 50%;
       width: 150px;
       height: 150px;
       object-fit: cover;
       margin-bottom: 1rem;
+    }
+    .presence-badge {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+    .presence-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     header h1 {
       margin: 0;
@@ -118,22 +137,18 @@
       0% { transform: translateY(-10px); }
       100% { transform: translateY(100vh); }
     }
-    .presence {
-      margin-top: 1rem;
-      text-align: center;
-    }
-    .presence img {
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
   </style>
 </head>
 <body>
 
   <div id="backToTop" onclick="scrollToTop()">🔝 للأعلى</div>
   <header>
-    <img src="https://l.top4top.io/p_3429l71o01.jpg" alt="Zero Relax">
+    <div class="profile-container">
+      <img src="https://l.top4top.io/p_3429l71o01.jpg" alt="Zero Relax" class="profile">
+      <div class="presence-badge">
+        <img src="https://lanyard.cnrad.dev/api/1163034928502550658" alt="Discord Presence">
+      </div>
+    </div>
     <h1>Zero Relax</h1>
     <p>مبرمج بوتات ديسكورد، مواقع وألعاب | عمره 18</p>
   </header>
@@ -177,11 +192,6 @@
       <a href="tel:+905350894170">اتصل بي</a>
     </div>
     <p>أو تواصل معي عبر ديسكورد: <strong>_nr5</strong></p>
-    <div class="presence">
-      <a href="https://discord.com/users/1163034928502550658" target="_blank">
-        <img src="https://lanyard.cnrad.dev/api/1163034928502550658" alt="Discord Presence">
-      </a>
-    </div>
   </section>
 
   <section>
