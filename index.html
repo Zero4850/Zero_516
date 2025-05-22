@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zero Relax</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    body, html {
       margin: 0;
+      padding: 0;
       font-family: 'Cairo', sans-serif;
       scroll-behavior: smooth;
-      background: #f8f8f8;
-      color: #222;
+      color: #fff;
+      background: #0f2027;
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      position: relative;
+      overflow-x: hidden;
+    }
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
     header {
-      background: #111;
-      color: white;
       text-align: center;
       padding: 4rem 1rem;
     }
@@ -25,6 +33,7 @@
       height: 150px;
       object-fit: cover;
       margin-bottom: 1rem;
+      border: 3px solid white;
     }
     header h1 {
       margin: 0;
@@ -40,7 +49,7 @@
       margin: auto;
     }
     h2 {
-      color: #333;
+      color: #ffd;
       margin-bottom: 1rem;
     }
     ul {
@@ -48,7 +57,7 @@
       list-style: none;
     }
     ul li {
-      background: #eee;
+      background: rgba(255,255,255,0.1);
       margin: 0.5rem 0;
       padding: 0.8rem;
       border-radius: 8px;
@@ -58,55 +67,54 @@
       margin: 0.5rem;
       text-decoration: none;
       color: white;
-      background: #333;
+      background: #03a9f4;
       padding: 0.5rem 1rem;
       border-radius: 8px;
       transition: background 0.3s;
     }
     .links a:hover {
-      background: #555;
+      background: #0288d1;
     }
-    form input,
-    form textarea {
+    form input, form textarea {
       width: 100%;
       padding: 0.8rem;
       margin: 0.5rem 0;
-      border: 1px solid #ccc;
+      border: none;
       border-radius: 6px;
       font-family: 'Cairo', sans-serif;
     }
     form button {
       padding: 0.7rem 1.5rem;
       border: none;
-      background: #111;
+      background: #03a9f4;
       color: white;
       border-radius: 6px;
       cursor: pointer;
       transition: background 0.3s;
     }
     form button:hover {
-      background: #333;
+      background: #0288d1;
     }
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      background: #111;
+      background: rgba(0,0,0,0.5);
       color: #aaa;
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 </head>
 <body>
+  <div id="particles-js"></div>
   <header>
-    <img src="https://l.top4top.io/p_3429l71o01.jpg" alt="Zero Relax" />
+    <img src="https://l.top4top.io/p_3429l71o01.jpg" alt="Zero Relax">
     <h1>Zero Relax</h1>
     <p>مبرمج بوتات ديسكورد، مواقع وألعاب | عمره 18</p>
   </header>
 
   <section>
     <h2>من أنا؟</h2>
-    <p>
-      أنا Zero Relax، مبرمج سوري بعمر 18 سنة. أشتغل على تطوير بوتات الديسكورد، برمجة المواقع، وتصميم الألعاب. أؤمن بأن البرمجة فن، وكل مشروع هو فرصة للإبداع.
-    </p>
+    <p>أنا Zero Relax، مبرمج سوري بعمر 18 سنة. أشتغل على تطوير بوتات الديسكورد، برمجة المواقع، وتصميم الألعاب. أؤمن بأن البرمجة فن، وكل مشروع هو فرصة للإبداع.</p>
   </section>
 
   <section>
@@ -131,67 +139,56 @@
   <section>
     <h2>نموذج التواصل</h2>
     <form id="contactForm">
-      <input type="text" name="name" placeholder="اسمك" required />
+      <input type="text" name="name" placeholder="اسمك" required>
       <textarea name="message" placeholder="طلبك" rows="5" required></textarea>
       <button type="submit">إرسال</button>
     </form>
-
     <script>
-      document.getElementById('contactForm').addEventListener('submit', async function (e) {
+      document.getElementById('contactForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         const name = e.target.name.value;
         const message = e.target.message.value;
 
-        const webhookURL =
-          'https://discord.com/api/webhooks/1375197806876168253/hAOxVCfgBfuzqFLzwH1VZKLi7cStT5N7045bRGfBsURGtgnlxCkXFLxW2EgLoDNqqZCv';
+        const webhookURL = "https://discord.com/api/webhooks/1375197806876168253/hAOxVCfgBfuzqFLzwH1VZKLi7cStT5N7045bRGfBsURGtgnlxCkXFLxW2EgLoDNqqZCv";
 
         const payload = {
-          embeds: [
-            {
-              title: "📩 طلب جديد",
-              color: 5814783,
-              fields: [
-                {
-                  name: "👤 الاسم",
-                  value: name,
-                  inline: false,
-                },
-                {
-                  name: "📝 الطلب",
-                  value: message,
-                  inline: false,
-                },
-              ],
-              timestamp: new Date().toISOString(),
-              footer: {
-                text: "Zero Relax",
-              },
-            },
-          ],
+          embeds: [{
+            title: "📩 طلب جديد من الموقع",
+            color: 3447003,
+            fields: [
+              { name: "👤 الاسم", value: name, inline: true },
+              { name: "📝 الطلب", value: message, inline: false }
+            ],
+            timestamp: new Date()
+          }]
         };
 
-        try {
-          const response = await fetch(webhookURL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload),
-          });
+        const response = await fetch(webhookURL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
 
-          if (response.ok) {
-            alert('✅ تم إرسال طلبك بنجاح!');
-            e.target.reset();
-          } else {
-            alert('❌ حدث خطأ، حاول مرة ثانية.');
-          }
-        } catch (error) {
-          alert('❌ حدث خطأ في الاتصال، حاول مرة ثانية.');
+        if (response.ok) {
+          alert('✅ تم إرسال طلبك بنجاح!');
+          e.target.reset();
+        } else {
+          alert('❌ حدث خطأ، حاول مرة ثانية.');
         }
       });
     </script>
   </section>
 
-  <footer>© 2025 Zero Relax. كل الحقوق محفوظة.</footer>
+  <footer>
+    © 2025 Zero Relax. كل الحقوق محفوظة.
+  </footer>
+
+  <script>
+    particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.json', function() {
+      console.log('particles.js loaded');
+    });
+  </script>
 </body>
 </html>
