@@ -10,13 +10,14 @@
       margin: 0;
       font-family: 'Cairo', sans-serif;
       scroll-behavior: smooth;
-      background: #121212;
+      background: linear-gradient(to bottom, #1e1e2f, #121221);
       color: #ddd;
       overflow-x: hidden;
+      min-height: 100vh;
     }
     header {
-      background: #1e1e1e;
-      color: #eee;
+      background: #111;
+      color: white;
       text-align: center;
       padding: 4rem 1rem;
       position: relative;
@@ -51,38 +52,78 @@
       list-style: none;
     }
     ul li {
-      background: #222;
+      background: #222233;
       margin: 0.5rem 0;
       padding: 0.8rem;
       border-radius: 8px;
-      box-shadow: 0 0 5px #333;
     }
     .links a {
       display: inline-block;
       margin: 0.5rem;
       text-decoration: none;
-      color: #eee;
+      color: white;
       background: #333;
       padding: 0.5rem 1rem;
       border-radius: 8px;
       transition: background 0.3s;
-      box-shadow: 0 0 5px #444;
     }
     .links a:hover {
       background: #555;
     }
-    form input,
-    form textarea {
+    form input, form textarea {
       width: 100%;
       padding: 0.8rem;
       margin: 0.5rem 0;
       border: 1px solid #444;
       border-radius: 6px;
-      background: #222;
+      background: #222233;
       color: #eee;
       font-family: 'Cairo', sans-serif;
     }
     form button {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      background: #444;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    form button:hover {
+      background: #666;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #111;
+      color: #666;
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #333;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+    }
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: white;
+      font-size: 1em;
+      user-select: none;
+      animation: fall linear infinite;
+      opacity: 0.8;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10px); }
+      100% { transform: translateY(100vh); }
+    }
+    section button#projectsBtn {
       padding: 0.7rem 1.5rem;
       border: none;
       background: #444;
@@ -91,55 +132,17 @@
       cursor: pointer;
       transition: background 0.3s;
       box-shadow: 0 0 5px #555;
+      margin-top: 1rem;
+      font-size: 1rem;
     }
-    form button:hover {
+    section button#projectsBtn:hover {
       background: #666;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: #1e1e1e;
-      color: #888;
-      box-shadow: inset 0 1px 5px #000;
-    }
-    #backToTop {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background: #444;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      display: none;
-      z-index: 999;
-      box-shadow: 0 0 10px #555;
-      user-select: none;
-    }
-    .snowflake {
-      position: fixed;
-      top: -10px;
-      color: #eee;
-      font-size: 1em;
-      user-select: none;
-      animation: fall linear infinite;
-      pointer-events: none;
-      text-shadow: 0 0 5px #aaa;
-    }
-    @keyframes fall {
-      0% {
-        transform: translateY(-10px);
-      }
-      100% {
-        transform: translateY(100vh);
-      }
     }
   </style>
 </head>
 <body>
 
   <div id="backToTop" onclick="scrollToTop()">🔝 للأعلى</div>
-
   <header>
     <img src="https://l.top4top.io/p_3429l71o01.jpg" alt="Zero Relax" />
     <h1>Zero Relax</h1>
@@ -148,9 +151,8 @@
 
   <section>
     <h2>من أنا؟</h2>
-    <p>
-      أنا Zero Relax، مبرمج سوري بعمر 18 سنة. أشتغل على تطوير بوتات الديسكورد، برمجة المواقع، وتصميم الألعاب. أؤمن بأن البرمجة فن، وكل مشروع هو فرصة للإبداع.
-    </p>
+    <p>أنا Zero Relax، مبرمج سوري بعمر 18 سنة. أشتغل على تطوير بوتات الديسكورد، برمجة المواقع، وتصميم الألعاب. أؤمن بأن البرمجة فن، وكل مشروع هو فرصة للإبداع.</p>
+    <button id="projectsBtn" onclick="location.href='projects.html'">مشاريعي</button>
   </section>
 
   <section>
@@ -163,15 +165,6 @@
   </section>
 
   <section>
-    <h2>مشاريعي المميزة</h2>
-    <ul>
-      <li>نظام تذاكر مخصص للديسكورد</li>
-      <li>موقع تفاعلي لعرض البورتفوليو</li>
-      <li>لعبة صغيرة على المتصفح للتحكم بشخصية بوت</li>
-    </ul>
-  </section>
-
-  <section>
     <h2>آراء العملاء</h2>
     <ul>
       <li>"شغل احترافي وسريع جدًا!" - عميل من السعودية</li>
@@ -179,28 +172,10 @@
     </ul>
   </section>
 
-<section>
-  <button onclick="location.href='projects.html'" style="
-    padding: 0.7rem 1.5rem;
-    border: none;
-    background: #444;
-    color: #eee;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s;
-    box-shadow: 0 0 5px #555;
-    margin-top: 1rem;
-  " 
-  onmouseover="this.style.background='#666'" 
-  onmouseout="this.style.background='#444'">
-    مشاريعي
-  </button>
-</section>
-
   <section>
     <h2>روابطي</h2>
     <div class="links">
-      <a href="https://instagram.com/m_emo51" target="_blank">انستقرام</a>
+      <a href="https://instagram.com/m_emo51" target="_blank" rel="noopener noreferrer">انستقرام</a>
       <a href="mailto:kemahjjj@gmail.com">إيميلي</a>
       <a href="tel:+905350894170">اتصل بي</a>
     </div>
@@ -214,67 +189,68 @@
       <textarea name="message" placeholder="طلبك" rows="5" required></textarea>
       <button type="submit">إرسال</button>
     </form>
-    <script>
-      document.getElementById('contactForm').addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const name = e.target.name.value;
-        const message = e.target.message.value;
-
-        const webhookURL =
-          "https://discord.com/api/webhooks/1229457989565569145/w4MEg8BaW-9cMVF8e-rw1iJxnpXwGFo-cHJXJ1iZzGpVXbwNlRC0eMSp7Oaq5y7R8qfd";
-
-        const payload = {
-          embeds: [
-            {
-              title: "📩 طلب جديد",
-              fields: [
-                { name: "👤 الاسم", value: name },
-                { name: "📝 الطلب", value: message },
-              ],
-              color: 3447003,
-            },
-          ],
-        };
-
-        const response = await fetch(webhookURL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        });
-
-        if (response.ok) {
-          alert("✅ تم إرسال طلبك بنجاح!");
-          e.target.reset();
-        } else {
-          alert("❌ حدث خطأ، حاول مرة ثانية.");
-        }
-      });
-
-      window.addEventListener("scroll", () => {
-        const btn = document.getElementById("backToTop");
-        btn.style.display = window.scrollY > 300 ? "block" : "none";
-      });
-
-      function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-
-      // تساقط الثلج
-      setInterval(() => {
-        const snowflake = document.createElement("div");
-        snowflake.classList.add("snowflake");
-        snowflake.innerHTML = "•";
-        snowflake.style.left = Math.random() * 100 + "vw";
-        snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
-        snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
-        document.body.appendChild(snowflake);
-        setTimeout(() => snowflake.remove(), 5000);
-      }, 200);
-    </script>
   </section>
 
-  <footer>© 2025 Zero Relax. كل الحقوق محفوظة.</footer>
+  <footer>
+    © 2025 Zero Relax. كل الحقوق محفوظة.
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const name = e.target.name.value;
+      const message = e.target.message.value;
+
+      const webhookURL = "https://discord.com/api/webhooks/1229457989565569145/w4MEg8BaW-9cMVF8e-rw1iJxnpXwGFo-cHJXJ1iZzGpVXbwNlRC0eMSp7Oaq5y7R8qfd";
+
+      const payload = {
+        embeds: [{
+          title: "📩 طلب جديد",
+          fields: [
+            { name: "👤 الاسم", value: name },
+            { name: "📝 الطلب", value: message }
+          ],
+          color: 3447003
+        }]
+      };
+
+      const response = await fetch(webhookURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        alert('✅ تم إرسال طلبك بنجاح!');
+        e.target.reset();
+      } else {
+        alert('❌ حدث خطأ، حاول مرة ثانية.');
+      }
+    });
+
+    window.addEventListener("scroll", () => {
+      const btn = document.getElementById("backToTop");
+      btn.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // تساقط الثلج
+    setInterval(() => {
+      const snowflake = document.createElement("div");
+      snowflake.classList.add("snowflake");
+      snowflake.innerHTML = "❄";
+      snowflake.style.left = Math.random() * 100 + "vw";
+      snowflake.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      snowflake.style.fontSize = (Math.random() * 10 + 10) + "px";
+      document.body.appendChild(snowflake);
+      setTimeout(() => snowflake.remove(), 5000);
+    }, 200);
+  </script>
+
 </body>
 </html>
