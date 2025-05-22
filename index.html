@@ -118,6 +118,24 @@
       z-index: 999;
       user-select: none;
     }
+    #goProjects {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #415a77;
+      color: #dbe9f4;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 999;
+      user-select: none;
+      transition: background 0.3s;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #goProjects:hover {
+      background: #2e4057;
+    }
     .snowflake {
       position: fixed;
       top: -10px;
@@ -138,6 +156,7 @@
 </head>
 <body>
   <div id="backToTop" onclick="scrollToTop()">🔝 للأعلى</div>
+  <a href="projects.html" id="goProjects" title="مشاريعي">مشاريعي</a>
 
   <header>
     <img src="https://l.top4top.io/p_3429l71o01.jpg" alt="Zero Relax" />
@@ -248,7 +267,7 @@
       setInterval(() => {
         const snowflake = document.createElement('div');
         snowflake.classList.add('snowflake');
-        snowflake.innerHTML = '•';
+        snowflake.innerHTML = '❄';
         snowflake.style.left = Math.random() * 100 + 'vw';
         snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
         snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
