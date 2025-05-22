@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zero Relax</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -21,31 +21,12 @@
       padding: 4rem 1rem;
       position: relative;
     }
-    .profile-container {
-      position: relative;
-      display: inline-block;
-    }
-    .profile-container img.profile {
+    header img {
       border-radius: 50%;
       width: 150px;
       height: 150px;
       object-fit: cover;
       margin-bottom: 1rem;
-    }
-    .presence-badge {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    }
-    .presence-badge img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
     header h1 {
       margin: 0;
@@ -137,20 +118,31 @@
       0% { transform: translateY(-10px); }
       100% { transform: translateY(100vh); }
     }
+    .presence {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    /* Lanyard widget container style */
+    #discord-presence {
+      display: inline-block;
+      margin-top: 1rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
   </style>
 </head>
 <body>
 
   <div id="backToTop" onclick="scrollToTop()">🔝 للأعلى</div>
   <header>
-    <div class="profile-container">
-      <img src="https://l.top4top.io/p_3429l71o01.jpg" alt="Zero Relax" class="profile">
-      <div class="presence-badge">
-        <img src="https://lanyard.cnrad.dev/api/1163034928502550658" alt="Discord Presence">
-      </div>
-    </div>
+    <img src="https://l.top4top.io/p_3429l71o01.jpg" alt="Zero Relax" />
     <h1>Zero Relax</h1>
     <p>مبرمج بوتات ديسكورد، مواقع وألعاب | عمره 18</p>
+    <!-- وضع حالة النشاط على صورة الحساب -->
+    <div class="presence">
+      <div id="discord-presence"></div>
+    </div>
   </header>
 
   <section>
@@ -197,71 +189,81 @@
   <section>
     <h2>نموذج التواصل</h2>
     <form id="contactForm">
-      <input type="text" name="name" placeholder="اسمك" required>
+      <input type="text" name="name" placeholder="اسمك" required />
       <textarea name="message" placeholder="طلبك" rows="5" required></textarea>
       <button type="submit">إرسال</button>
     </form>
-    <script>
-      document.getElementById('contactForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const name = e.target.name.value;
-        const message = e.target.message.value;
-
-        const webhookURL = "https://discord.com/api/webhooks/1229457989565569145/w4MEg8BaW-9cMVF8e-rw1iJxnpXwGFo-cHJXJ1iZzGpVXbwNlRC0eMSp7Oaq5y7R8qfd";
-
-        const payload = {
-          embeds: [{
-            title: "📩 طلب جديد",
-            fields: [
-              { name: "👤 الاسم", value: name },
-              { name: "📝 الطلب", value: message }
-            ],
-            color: 3447003
-          }]
-        };
-
-        const response = await fetch(webhookURL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(payload)
-        });
-
-        if (response.ok) {
-          alert('✅ تم إرسال طلبك بنجاح!');
-          e.target.reset();
-        } else {
-          alert('❌ حدث خطأ، حاول مرة ثانية.');
-        }
-      });
-
-      window.addEventListener("scroll", () => {
-        const btn = document.getElementById("backToTop");
-        btn.style.display = window.scrollY > 300 ? "block" : "none";
-      });
-
-      function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-
-      // تساقط الثلج
-      setInterval(() => {
-        const snowflake = document.createElement("div");
-        snowflake.classList.add("snowflake");
-        snowflake.innerHTML = "❄";
-        snowflake.style.left = Math.random() * 100 + "vw";
-        snowflake.style.animationDuration = (Math.random() * 3 + 2) + "s";
-        snowflake.style.fontSize = (Math.random() * 10 + 10) + "px";
-        document.body.appendChild(snowflake);
-        setTimeout(() => snowflake.remove(), 5000);
-      }, 200);
-    </script>
   </section>
 
   <footer>
     © 2025 Zero Relax. كل الحقوق محفوظة.
   </footer>
 
+  <script src="https://unpkg.com/@l2beat/lanyard-widget@latest/dist/lanyard-widget.min.js"></script>
+  <script>
+    const userId = "1163034928502550658"; // معرف حساب ديسكورد الخاص فيك
+    LanyardWidget.init({
+      userId: userId,
+      elementId: "discord-presence",
+      showTimestamp: true,
+      theme: "dark",
+      size: "medium"
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const name = e.target.name.value;
+      const message = e.target.message.value;
+
+      const webhookURL = "https://discord.com/api/webhooks/1229457989565569145/w4MEg8BaW-9cMVF8e-rw1iJxnpXwGFo-cHJXJ1iZzGpVXbwNlRC0eMSp7Oaq5y7R8qfd";
+
+      const payload = {
+        embeds: [{
+          title: "📩 طلب جديد",
+          fields: [
+            { name: "👤 الاسم", value: name },
+            { name: "📝 الطلب", value: message }
+          ],
+          color: 3447003
+        }]
+      };
+
+      const response = await fetch(webhookURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        alert('✅ تم إرسال طلبك بنجاح!');
+        e.target.reset();
+      } else {
+        alert('❌ حدث خطأ، حاول مرة ثانية.');
+      }
+    });
+
+    window.addEventListener("scroll", () => {
+      const btn = document.getElementById("backToTop");
+      btn.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // تساقط الثلج
+    setInterval(() => {
+      const snowflake = document.createElement("div");
+      snowflake.classList.add("snowflake");
+      snowflake.innerHTML = "❄";
+      snowflake.style.left = Math.random() * 100 + "vw";
+      snowflake.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      snowflake.style.fontSize = (Math.random() * 10 + 10) + "px";
+      document.body.appendChild(snowflake);
+      setTimeout(() => snowflake.remove(), 5000);
+    }, 200);
+  </script>
 </body>
 </html>
