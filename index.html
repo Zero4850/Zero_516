@@ -10,14 +10,12 @@
       margin: 0;
       font-family: 'Cairo', sans-serif;
       scroll-behavior: smooth;
-      background: #000; /* لون خلفية غامق ليتباين مع الثلج */
+      background: linear-gradient(#0f2027, #203a43, #2c5364);
       color: #fff;
       position: relative;
       overflow-x: hidden;
     }
     header {
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
       text-align: center;
       padding: 4rem 1rem;
     }
@@ -27,6 +25,7 @@
       height: 150px;
       object-fit: cover;
       margin-bottom: 1rem;
+      border: 3px solid #fff;
     }
     header h1 {
       margin: 0;
@@ -60,19 +59,19 @@
       margin: 0.5rem;
       text-decoration: none;
       color: white;
-      background: #333;
+      background: #444;
       padding: 0.5rem 1rem;
       border-radius: 8px;
       transition: background 0.3s;
     }
     .links a:hover {
-      background: #555;
+      background: #666;
     }
     form input, form textarea {
       width: 100%;
       padding: 0.8rem;
       margin: 0.5rem 0;
-      border: 1px solid #ccc;
+      border: none;
       border-radius: 6px;
       font-family: 'Cairo', sans-serif;
     }
@@ -91,45 +90,38 @@
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      background: rgba(0, 0, 0, 0.8);
+      background: #111;
       color: #aaa;
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #444;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      display: none;
+      cursor: pointer;
     }
     .snowflake {
       position: fixed;
       top: -10px;
-      color: white;
-      font-size: 1em;
-      user-select: none;
-      z-index: 9999;
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
       animation: fall linear infinite;
     }
     @keyframes fall {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      100% {
+      to {
         transform: translateY(100vh);
-        opacity: 0;
       }
     }
   </style>
 </head>
 <body>
-  <script>
-    // توليد ثلج بسيط
-    const snowCount = 100;
-    for (let i = 0; i < snowCount; i++) {
-      const snowflake = document.createElement("div");
-      snowflake.classList.add("snowflake");
-      snowflake.style.left = Math.random() * 100 + "vw";
-      snowflake.style.animationDuration = (Math.random() * 3 + 2) + "s";
-      snowflake.style.fontSize = (Math.random() * 10 + 10) + "px";
-      snowflake.innerText = "❄";
-      document.body.appendChild(snowflake);
-    }
-  </script>
-
   <header>
     <img src="https://l.top4top.io/p_3429l71o01.jpg" alt="Zero Relax">
     <h1>Zero Relax</h1>
@@ -151,6 +143,15 @@
   </section>
 
   <section>
+    <h2>الإنجازات</h2>
+    <ul>
+      <li>عدد المشاريع: 25+</li>
+      <li>سنوات الخبرة: 3</li>
+      <li>العملاء السعداء: 50+</li>
+    </ul>
+  </section>
+
+  <section>
     <h2>روابطي</h2>
     <div class="links">
       <a href="https://instagram.com/m_emo51" target="_blank">انستقرام</a>
@@ -158,6 +159,14 @@
       <a href="tel:+905350894170">اتصل بي</a>
     </div>
     <p>أو تواصل معي عبر ديسكورد: <strong>_nr5</strong></p>
+  </section>
+
+  <section>
+    <h2>آراء العملاء</h2>
+    <ul>
+      <li>🔥 "شغل احترافي وسريع، أنصح فيه!" - عميل 1</li>
+      <li>💯 "فهم المطلوب بسرعة وسلّمه بشكل ممتاز" - عميل 2</li>
+    </ul>
   </section>
 
   <section>
@@ -176,24 +185,19 @@
         const webhookURL = "https://discord.com/api/webhooks/1375197806876168253/hAOxVCfgBfuzqFLzwH1VZKLi7cStT5N7045bRGfBsURGtgnlxCkXFLxW2EgLoDNqqZCv";
 
         const payload = {
-          embeds: [
-            {
-              title: "📩 طلب جديد",
-              color: 3447003,
-              fields: [
-                { name: "👤 الاسم", value: name },
-                { name: "📝 الطلب", value: message }
-              ],
-              timestamp: new Date()
-            }
-          ]
+          embeds: [{
+            title: "📩 طلب جديد",
+            fields: [
+              { name: "👤 الاسم", value: name, inline: true },
+              { name: "📝 الطلب", value: message, inline: false }
+            ],
+            color: 5814783
+          }]
         };
 
         const response = await fetch(webhookURL, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
         });
 
@@ -207,9 +211,25 @@
     </script>
   </section>
 
+  <div id="backToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">⬆ رجوع للأعلى</div>
+
   <footer>
     © 2025 Zero Relax. كل الحقوق محفوظة.
   </footer>
 
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('backToTop').style.display = window.scrollY > 500 ? 'block' : 'none';
+    });
+
+    for (let i = 0; i < 50; i++) {
+      let snow = document.createElement('div');
+      snow.classList.add('snowflake');
+      snow.style.left = Math.random() * 100 + 'vw';
+      snow.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      snow.style.opacity = Math.random();
+      document.body.appendChild(snow);
+    }
+  </script>
 </body>
 </html>
