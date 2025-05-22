@@ -4,8 +4,96 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zero Relax</title>
-  <link href="styles.css" rel="stylesheet" />
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      scroll-behavior: smooth;
+      background: #f8f8f8;
+      color: #222;
+    }
+    header {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+    header img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+    section {
+      padding: 3rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h2 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+    ul li {
+      background: #eee;
+      margin: 0.5rem 0;
+      padding: 0.8rem;
+      border-radius: 8px;
+    }
+    .links a {
+      display: inline-block;
+      margin: 0.5rem;
+      text-decoration: none;
+      color: white;
+      background: #333;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .links a:hover {
+      background: #555;
+    }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: 'Cairo', sans-serif;
+    }
+    form button {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      background: #111;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    form button:hover {
+      background: #333;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #111;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -17,9 +105,7 @@
   <section>
     <h2>من أنا؟</h2>
     <p>
-      أنا Zero Relax، مبرمج سوري بعمر 18 سنة. أشتغل على تطوير بوتات الديسكورد،
-      برمجة المواقع، وتصميم الألعاب. أؤمن بأن البرمجة فن، وكل مشروع هو فرصة
-      للإبداع.
+      أنا Zero Relax، مبرمج سوري بعمر 18 سنة. أشتغل على تطوير بوتات الديسكورد، برمجة المواقع، وتصميم الألعاب. أؤمن بأن البرمجة فن، وكل مشروع هو فرصة للإبداع.
     </p>
   </section>
 
@@ -47,15 +133,44 @@
     <form id="contactForm">
       <input type="text" name="name" placeholder="اسمك" required />
       <textarea name="message" placeholder="طلبك" rows="5" required></textarea>
-      <div class="g-recaptcha" data-sitekey="6LeUcBMlAAAAABuURTtKOrf6zF7ApqVzWoCM3cH9"></div>
       <button type="submit">إرسال</button>
     </form>
+
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const message = e.target.message.value;
+
+        const webhookURL =
+          'https://discord.com/api/webhooks/1375197806876168253/hAOxVCfgBfuzqFLzwH1VZKLi7cStT5N7045bRGfBsURGtgnlxCkXFLxW2EgLoDNqqZCv';
+
+        const payload = {
+          content: `📩 طلب جديد:\n👤 الاسم: ${name}\n📝 الطلب: ${message}`,
+        };
+
+        try {
+          const response = await fetch(webhookURL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+          });
+
+          if (response.ok) {
+            alert('✅ تم إرسال طلبك بنجاح!');
+            e.target.reset();
+          } else {
+            alert('❌ حدث خطأ، حاول مرة ثانية.');
+          }
+        } catch (error) {
+          alert('❌ حدث خطأ في الاتصال، حاول مرة ثانية.');
+        }
+      });
+    </script>
   </section>
 
-  <footer>
-    © 2025 Zero Relax. كل الحقوق محفوظة.
-  </footer>
-
-  <script src="scripts.js"></script>
+  <footer>© 2025 Zero Relax. كل الحقوق محفوظة.</footer>
 </body>
 </html>
