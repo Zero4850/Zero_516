@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>مشاريعي - Zero Relax</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #121212;
+      color: #eee;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #00bcd4;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .project-card {
+      background: #222;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 10px #00bcd4;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover {
+      transform: scale(1.05);
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+      height: 150px;
+      object-fit: cover;
+    }
+    .project-card h3 {
+      margin-top: 0.8rem;
+      color: #00bcd4;
+    }
+    .project-card p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+    a.back {
+      display: block;
+      max-width: 100px;
+      margin: 2rem auto 0;
+      text-align: center;
+      padding: 0.5rem;
+      background: #00bcd4;
+      color: #121212;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    a.back:hover {
+      background: #0097a7;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>مشاريعي المميزة</h1>
+  <div class="projects">
+    <div class="project-card">
+      <img src="https://via.placeholder.com/400x150?text=نظام+تذاكر+الديسكورد" alt="نظام تذاكر ديسكورد" />
+      <h3>نظام تذاكر مخصص للديسكورد</h3>
+      <p>نظام تذاكر لإدارة الدعم الفني داخل سيرفر ديسكورد بشكل منظم وفعال.</p>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/400x150?text=موقع+تفاعلي" alt="موقع تفاعلي" />
+      <h3>موقع تفاعلي لعرض البورتفوليو</h3>
+      <p>موقع بسيط ومتجاوب لعرض أعمالي ومهاراتي بطريقة جذابة وسهلة الاستخدام.</p>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/400x150?text=لعبة+متصفح" alt="لعبة متصفح" />
+      <h3>لعبة صغيرة على المتصفح</h3>
+      <p>لعبة بسيطة ممتعة للتحكم بشخصية بوت ضمن المتصفح.</p>
+    </div>
+  </div>
+  <a href="index.html" class="back">رجوع للرئيسية</a>
+</body>
+</html>
