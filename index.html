@@ -146,7 +146,28 @@
           'https://discord.com/api/webhooks/1375197806876168253/hAOxVCfgBfuzqFLzwH1VZKLi7cStT5N7045bRGfBsURGtgnlxCkXFLxW2EgLoDNqqZCv';
 
         const payload = {
-          content: `📩 طلب جديد:\n👤 الاسم: ${name}\n📝 الطلب: ${message}`,
+          embeds: [
+            {
+              title: "📩 طلب جديد",
+              color: 5814783,
+              fields: [
+                {
+                  name: "👤 الاسم",
+                  value: name,
+                  inline: false,
+                },
+                {
+                  name: "📝 الطلب",
+                  value: message,
+                  inline: false,
+                },
+              ],
+              timestamp: new Date().toISOString(),
+              footer: {
+                text: "Zero Relax",
+              },
+            },
+          ],
         };
 
         try {
