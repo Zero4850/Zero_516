@@ -82,9 +82,35 @@
       background: #0097a7;
       color: #fff;
     }
+    /* زر لوحة التحكم */
+    .admin-btn {
+      display: inline-block;
+      background: #00bcd4;
+      color: #121212;
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 0.8rem;
+    }
+    .admin-btn:hover {
+      background: #0097a7;
+      color: #fff;
+    }
+    /* لوضع body بالنسبة للزر */
+    body {
+      position: relative;
+      min-height: 100vh;
+    }
   </style>
 </head>
 <body>
+  <a href="admin-login.html" class="admin-btn">لوحة التحكم</a>
+
   <h1>مشاريعي المميزة</h1>
   <div class="projects">
     <div class="project-card">
